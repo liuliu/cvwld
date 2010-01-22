@@ -36,3 +36,7 @@ CvMat* cvExtractWLD(const CvArr* image, CvWLDParams params)
 	cvReleaseMat(&hist);
 	return hist_norm;
 }
+
+void cvExtractWLD(const CvArr* image, CvMemStorage* storage, CvSeq** keypoint, CvSeq** descriptor, CvWLDParams params)
+{
+}

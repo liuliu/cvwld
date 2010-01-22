@@ -9,5 +9,6 @@ typedef struct CvWLDParams {
 
 CvWLDParams cvWLDParams(int T, int M, int S);
 CvMat* cvExtractWLD(const CvArr* image, CvWLDParams params);
+void cvExtractWLD(const CvArr* image, CvMemStorage* storage, CvSeq** keypoint, CvSeq** descriptor, CvWLDParams params);
 
 #endif
