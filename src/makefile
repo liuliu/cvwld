@@ -1,6 +1,6 @@
 OPENCV = /opt/opencv
 CXX = g++
-LINKFLAG = -pthread -lcv -lhighgui
+LINKFLAG = -pthread -lcv -lhighgui -lcvaux
 INCFLAGS = -I"$(OPENCV)/include/opencv"
 CXXFLAGS = -O2 --fast-math -msse2
 
