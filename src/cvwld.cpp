@@ -30,11 +30,16 @@ CvMat* cvExtractWLD( const CvArr* image, CvWLDParams params )
 	cvZero( hist );
 	uchar* ptr = img->data.ptr + img->step + 1;
 	int i, j;
+	const int alpha = 6;
+	const int beta = 5;
+	/* it is two important params (in implementation perspective) after consulting
+	 * the author of the paper, the alpha will exaggrate the different and beta to
+	 * avoid where ptr[0] is zero */
 	for ( i = 1; i < img->rows - 1; i++ )
 	{
 		for ( j = 1; j < img->cols - 1; j++ )
 		{
-			float sigma = cvFastArctan( ptr[-img->step - 1] + ptr[-img->step] + ptr[-img->step + 1] + ptr[-1] + ptr[1] + ptr[img->step - 1] + ptr[img->step] + ptr[img->step + 1] - 8 * ptr[0], ptr[0] );
+			float sigma = cvFastArctan( (ptr[-img->step - 1] + ptr[-img->step] + ptr[-img->step + 1] + ptr[-1] + ptr[1] + ptr[img->step - 1] + ptr[img->step] + ptr[img->step + 1] - 8 * ptr[0]) * alpha, ptr[0] + beta );
 			if ( sigma > 180.0 )
 				sigma = sigma - 360.0;
 			float theta = cvFastArctan( ptr[img->step] - ptr[-img->step], ptr[-1] - ptr[1] );
