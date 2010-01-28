@@ -31,7 +31,7 @@ CvMat* cvExtractWLD( const CvArr* image, CvWLDParams params )
 	uchar* ptr = img->data.ptr + img->step + 1;
 	int i, j;
 	const int alpha = 6;
-	const int beta = 5;
+	const int beta = 0;
 	/* it is two important params (in implementation perspective) after consulting
 	 * the author of the paper, the alpha will exaggrate the different and beta to
 	 * avoid where ptr[0] is zero */
